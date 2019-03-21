@@ -1,0 +1,20 @@
+html,
+body {
+    height: 100%;
+}
+
+main {
+    background-color: #f5f5f5;
+}
+
+#registration {
+    max-width: 330px
+}
+
+#areaListContainer {
+    opacity: 0;
+}
+
+#cityListContainer {
+    opacity: 0;
+}
