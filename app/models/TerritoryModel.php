@@ -14,7 +14,7 @@ class TerritoryModel extends Model
     public function getAreas($region)
     {
         $params = [
-            'region' => "%$region",
+            'region' => "%район, $region",
         ];
 
         return $this->db->row("SELECT DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(ter_address, ',', 2), ',', -1) AS area FROM `t_koatuu_tree` WHERE ter_pid IS NOT NULL AND ter_address LIKE :region", $params);
