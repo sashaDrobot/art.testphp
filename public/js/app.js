@@ -39,10 +39,11 @@ $(document).ready(function () {
             city: {
                 required: "Поле 'Город' обязательно к заполнению"
             }
-        }
+        },
+        ignore: ":hidden:not(select)"
     });
 
-    $(".chosen-select").chosen({required: true});
+    $(".chosen-select").chosen();
 
     $('#regionList').change(function () {
         $.ajax({
@@ -90,11 +91,13 @@ $(document).ready(function () {
                 data: new FormData(this),
                 success: function (result) {
                     let res = JSON.parse(result);
-                   /* if (JSON.parse(result).errors) {
-                        alert(JSON.parse(result).errors);
-                    }*/
-                    alert(res.msg);
-                    $(location).attr('href', res.href)
+                    if (res.errors) {
+                        alert(res.errors);
+                    }
+                    if (res.status) {
+                        alert(res.msg);
+                        $(location).attr('href', res.href)
+                    }
                 },
             });
         }
